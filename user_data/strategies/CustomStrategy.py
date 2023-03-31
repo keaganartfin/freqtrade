@@ -125,8 +125,10 @@ class CustomStrategy(IStrategy):
                 (dataframe['rsi'] < 30) &
                 (dataframe['slowk'] < 20) &
                 (dataframe['slowd'] < 20) &
-                (dataframe['ema50'] > dataframe['ema100'])&
-                (dataframe['bb_lowerband'] > dataframe['close']) &
+                (dataframe['ema50'] > dataframe['ema100'])
+            ) | (
+                (dataframe['bb_lowerband'] > dataframe['close']) 
+            ) | (
                 (dataframe['CDLHAMMER'] == 100)
             ),
             'enter_long'] = 1
