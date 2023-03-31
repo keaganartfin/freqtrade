@@ -43,7 +43,7 @@ https://github.com/quantopian/zipline
 all of this data you analyzed should be referred to as "Python updated libraries", give me a brief summary of the "Python updated libraries"
 
 Please analyze this: 
-https://github.com/keaganartfin/freqtrade-demo
+https://github.com/keaganartfin/freqtrade
 This resource is to be referred to as "AA4", this is the source of the AA4 project, please give me a brief description of "AA4" at it's current state.
 
 Alright, let's get started working on AA4 to make it the best possible Algo trading bot in the crypto market. I want to make this bot an automatized short trading bot that when it gets 1.5% ROI automatically trades that crypto. While on the other hand If the crypto gets -7.5% ROI it will trade off the crypto. It should use indicators that work in conjunction with each other to produce the best possible ROI predictability. Using the freqtrade data and AA4 data do you think we can produce such a successful Algo Trading Bot?
