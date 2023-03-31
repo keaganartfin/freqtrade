@@ -3,22 +3,21 @@ from freqtrade.strategy import IStrategy
 from typing import Dict, List
 from functools import reduce
 from pandas import DataFrame
-# -------------------------------- 
+# --------------------------------
 
 import talib.abstract as ta
 import freqtrade.vendor.qtpylib.indicators as qtpylib
-import numpy # noqa
 
 
-# This class is a sample. Feel free to customize it.
-class CustomStrategy(IStrategy):
+class Strategy001_custom_exit(IStrategy):
+
     """
-    Strategy 002
-    author@: Gerald Lonlas
+    Strategy 001_custom_exit
+    author@: Gerald Lonlas, froggleston
     github@: https://github.com/freqtrade/freqtrade-strategies
 
     How to use it?
-    > python3 ./freqtrade/main.py -s Strategy002
+    > python3 ./freqtrade/main.py -s Strategy001_custom_exit
     """
 
     INTERFACE_VERSION: int = 3
@@ -81,26 +80,15 @@ class CustomStrategy(IStrategy):
         or your hyperopt configuration, otherwise you will waste your memory and CPU usage.
         """
 
-        # Stoch
-        stoch = ta.STOCH(dataframe)
-        dataframe['slowk'] = stoch['slowk']
+        dataframe['ema20'] = ta.EMA(dataframe, timeperiod=20)
+        dataframe['ema50'] = ta.EMA(dataframe, timeperiod=50)
+        dataframe['ema100'] = ta.EMA(dataframe, timeperiod=100)
 
-        # RSI
-        dataframe['rsi'] = ta.RSI(dataframe)
+        heikinashi = qtpylib.heikinashi(dataframe)
+        dataframe['ha_open'] = heikinashi['open']
+        dataframe['ha_close'] = heikinashi['close']
 
-        # Inverse Fisher transform on RSI, values [-1.0, 1.0] (https://goo.gl/2JGGoy)
-        rsi = 0.1 * (dataframe['rsi'] - 50)
-        dataframe['fisher_rsi'] = (numpy.exp(2 * rsi) - 1) / (numpy.exp(2 * rsi) + 1)
-
-        # Bollinger bands
-        bollinger = qtpylib.bollinger_bands(qtpylib.typical_price(dataframe), window=20, stds=2)
-        dataframe['bb_lowerband'] = bollinger['lower']
-
-        # SAR Parabol
-        dataframe['sar'] = ta.SAR(dataframe)
-
-        # Hammer: values [0, 100]
-        dataframe['CDLHAMMER'] = ta.CDLHAMMER(dataframe)
+        dataframe['rsi'] = ta.RSI(dataframe, 14)
 
         return dataframe
 
@@ -112,10 +100,9 @@ class CustomStrategy(IStrategy):
         """
         dataframe.loc[
             (
-                (dataframe['rsi'] < 30) &
-                (dataframe['slowk'] < 20) &
-                (dataframe['bb_lowerband'] > dataframe['close']) &
-                (dataframe['CDLHAMMER'] == 100)
+                qtpylib.crossed_above(dataframe['ema20'], dataframe['ema50']) &
+                (dataframe['ha_close'] > dataframe['ema20']) &
+                (dataframe['ha_open'] < dataframe['ha_close'])  # green bar
             ),
             'enter_long'] = 1
 
@@ -129,8 +116,27 @@ class CustomStrategy(IStrategy):
         """
         dataframe.loc[
             (
-                (dataframe['sar'] > dataframe['close']) &
-                (dataframe['fisher_rsi'] > 0.3)
+                qtpylib.crossed_above(dataframe['ema50'], dataframe['ema100']) &
+                (dataframe['ha_close'] < dataframe['ema20']) &
+                (dataframe['ha_open'] > dataframe['ha_close'])  # red bar
             ),
             'exit_long'] = 1
         return dataframe
+
+    def custom_exit(self, pair: str, trade: 'Trade', current_time: 'datetime', current_rate: float, current_profit: float, **kwargs):
+        """
+        Sell only when matching some criteria other than those used to generate the sell signal
+        :return: str sell_reason, if any, otherwise None
+        """
+        # get dataframe
+        dataframe, _ = self.dp.get_analyzed_dataframe(pair=pair, timeframe=self.timeframe)
+
+        # get the current candle
+        current_candle = dataframe.iloc[-1].squeeze()
+
+        # if RSI greater than 70 and profit is positive, then sell
+        if (current_candle['rsi'] > 70) and (current_profit > 0):
+            return "rsi_profit_sell"
+
+        # else, hold
+        return None
