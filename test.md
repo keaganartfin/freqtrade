@@ -77,3 +77,61 @@ MultiMa.py: As the name suggests, this strategy combines multiple moving average
 berlinguyinca/AdxSmas.py: This strategy combines the ADX (Average Directional Index) and SMAs (Simple Moving Averages) to identify trends and potential trade entries. The ADX is a useful tool for measuring the strength of a trend, while SMAs can help identify trend direction and crossovers.
 
 berlinguyinca/CCIStrategy.py: The Commodity Channel Index (CCI) is an oscillator that measures the deviation of an asset's price from its historical average. The CCI can help identify overbought and oversold conditions and could be combined with other indicators to create a more robust strategy.
+
+
+
+
+
+
+
+
+
+
+================== SUMMARY METRICS ==================
+| Metric                      | Value               |
+|-----------------------------+---------------------|
+| Backtesting from            | 2021-01-01 00:00:00 |
+| Backtesting to              | 2023-03-31 20:30:00 |
+| Max open trades             | 10                  |
+|                             |                     |
+| Total/Daily Avg Trades      | 4008 / 4.89         |
+| Starting balance            | 1000 USDT           |
+| Final balance               | 252.9 USDT          |
+| Absolute profit             | -747.1 USDT         |
+| Total profit %              | -74.71%             |
+| CAGR %                      | -45.81%             |
+| Sortino                     | -21.43              |
+| Sharpe                      | -7.76               |
+| Calmar                      | -2.27               |
+| Profit factor               | 0.60                |
+| Expectancy                  | -0.02               |
+| Trades per day              | 4.89                |
+| Avg. daily profit %         | -0.09%              |
+| Avg. stake amount           | 99.998 USDT         |
+| Total trade volume          | 400792.868 USDT     |
+|                             |                     |
+| Best Pair                   | AXS/USDT 13.95%     |
+| Worst Pair                  | BAL/USDT -323.04%   |
+| Best trade                  | REQ/USDT 5.00%      |
+| Worst trade                 | BAL/USDT -10.70%    |
+| Best day                    | 27.679 USDT         |
+| Worst day                   | -40.752 USDT        |
+| Days win/draw/lose          | 623 / 68 / 129      |
+| Avg. Duration Winners       | 3:16:00             |
+| Avg. Duration Loser         | 1 day, 13:25:00     |
+| Rejected Entry signals      | 0                   |
+| Entry/Exit Timeouts         | 0 / 0               |
+|                             |                     |
+| Min balance                 | 240.291 USDT        |
+| Max balance                 | 1037.862 USDT       |
+| Max % of account underwater | 76.85%              |
+| Absolute Drawdown (Account) | 76.85%              |
+| Absolute Drawdown           | 797.572 USDT        |
+| Drawdown high               | 37.862 USDT         |
+| Drawdown low                | -759.709 USDT       |
+| Drawdown Start              | 2021-03-09 09:40:00 |
+| Drawdown End                | 2023-03-15 16:10:00 |
+| Market change               | -6.73%              |
+=====================================================
+
+
