@@ -11,7 +11,7 @@ import numpy # noqa
 
 
 # This class is a sample. Feel free to customize it.
-class Strategy(IStrategy):
+class CustomStrategy(IStrategy):
     """
     Strategy 002
     author@: Gerald Lonlas

@@ -10559,3 +10559,14 @@ freqtrade.exceptions.OperationalException: Impossible to load Strategy 'sample_s
 2023-03-31 15:26:09,017 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
 2023-03-31 15:27:09,078 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
 2023-03-31 15:28:09,139 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 15:29:09,205 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 15:30:11,010 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 15:31:11,071 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 15:31:31,684 - freqtrade.commands.trade_commands - INFO - SIGINT received, aborting ...
+2023-03-31 15:31:31,686 - freqtrade.commands.trade_commands - INFO - worker found ... calling exit
+2023-03-31 15:31:31,688 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': status, 'status': 'process died'}
+2023-03-31 15:31:31,689 - freqtrade.freqtradebot - INFO - Cleaning up modules ...
+2023-03-31 15:31:31,713 - freqtrade.rpc.rpc_manager - INFO - Cleaning up rpc modules ...
+2023-03-31 15:31:31,714 - freqtrade.rpc.rpc_manager - INFO - Cleaning up rpc.apiserver ...
+2023-03-31 15:31:31,715 - freqtrade.rpc.api_server.webserver - INFO - Stopping API Server
+2023-03-31 15:31:31,783 - uvicorn.error - INFO - Shutting down
