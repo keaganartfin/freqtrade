@@ -58,6 +58,9 @@ class CustomStrategy(IStrategy):
         'stoploss': 'market',
         'stoploss_on_exchange': False
     }
+    # Add the Bollinger Bands parameters
+    bollinger_bands_std = 2.0
+    bollinger_bands_window = 20
 
     def informative_pairs(self):
         """
@@ -81,20 +84,27 @@ class CustomStrategy(IStrategy):
         or your hyperopt configuration, otherwise you will waste your memory and CPU usage.
         """
 
-        # Stoch
-        stoch = ta.STOCH(dataframe)
+        # Stochastics Slow
+        stoch = ta.STOCH(dataframe, fastk_period=14, slowk_period=3, slowd_period=3)
         dataframe['slowk'] = stoch['slowk']
+        dataframe['slowd'] = stoch['slowd']
+        
+        # EMA - Exponential Moving Average
+        dataframe['ema50'] = ta.EMA(dataframe, timeperiod=50)
+        dataframe['ema100'] = ta.EMA(dataframe, timeperiod=100)
 
         # RSI
-        dataframe['rsi'] = ta.RSI(dataframe)
+        dataframe['rsi'] = ta.RSI(dataframe, timeperiod=14)
 
         # Inverse Fisher transform on RSI, values [-1.0, 1.0] (https://goo.gl/2JGGoy)
         rsi = 0.1 * (dataframe['rsi'] - 50)
         dataframe['fisher_rsi'] = (numpy.exp(2 * rsi) - 1) / (numpy.exp(2 * rsi) + 1)
 
         # Bollinger bands
-        bollinger = qtpylib.bollinger_bands(qtpylib.typical_price(dataframe), window=20, stds=2)
-        dataframe['bb_lowerband'] = bollinger['lower']
+        bollinger = ta.BBANDS(dataframe, timeperiod=self.bollinger_bands_window, nbdevup=self.bollinger_bands_std, nbdevdn=self.bollinger_bands_std)
+        dataframe['bb_lowerband'] = bollinger['lowerband']
+        dataframe['bb_middleband'] = bollinger['middleband']
+        dataframe['bb_upperband'] = bollinger['upperband']
 
         # SAR Parabol
         dataframe['sar'] = ta.SAR(dataframe)
@@ -114,6 +124,8 @@ class CustomStrategy(IStrategy):
             (
                 (dataframe['rsi'] < 30) &
                 (dataframe['slowk'] < 20) &
+                (dataframe['slowd'] < 20) &
+                (dataframe['ema50'] > dataframe['ema100'])&
                 (dataframe['bb_lowerband'] > dataframe['close']) &
                 (dataframe['CDLHAMMER'] == 100)
             ),
@@ -128,9 +140,16 @@ class CustomStrategy(IStrategy):
         :return: DataFrame with buy column
         """
         dataframe.loc[
-            (
+            (   
+                (dataframe['rsi'] > 70) &
+                (dataframe['slowk'] > 80) &
+                (dataframe['slowd'] > 80) &
+                (dataframe['ema50'] < dataframe['ema100'])
+            ) | (
                 (dataframe['sar'] > dataframe['close']) &
                 (dataframe['fisher_rsi'] > 0.3)
+            ) | (
+                (dataframe['close'] > dataframe['bb_upperband'])
             ),
             'exit_long'] = 1
         return dataframe

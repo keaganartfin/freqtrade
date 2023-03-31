@@ -15,6 +15,7 @@ Keywords to refer to, IE, "For my next question, please refer to "freqtrade docs
 "Python updated libraries"
 "AA4 data"
 "general strategies"
+"potential strategies data"
 
 Please analyze this: 
 https://github.com/freqtrade/freqtrade
@@ -57,6 +58,9 @@ Strategy 005
 
 Of these strategies which do you feel would be the best jumping-off point before implementing our own data and information into the strategy?
 
+Please analyze this: https://github.com/keaganartfin/freqtrade/tree/master/user_data/potential_strategies
+Every file and script is essential information in regard to AA4. It doesn't matter what the title of the file is called or the content inside of the file I want you to analyze every bit of data and information and use it to give the best-educated responses as you can. Refer to all of this data information as "potential strategies data".
+
 
 
 
@@ -71,3 +75,5 @@ API Passphrase: CharlieKingstonBelle312698
 
 
 "pair_whitelist": ["1INCH/USDT","AAVE/USDT","ACH/USDT","ADA/USDT","ALGO/USDT","ALICE/USDT","ALPINE/USDT","ANT/USDT","APE/USDT","API3/USDT","APT/USDT","ASTR/USDT","ATOM/USDT","AUDIO/USDT","AVAX/USDT","AXL/USDT","AXS/USDT","BAL/USDT","BAND/USDT","BAT/USDT","BCH/USDT","BICO/USDT","BNB/USDT","BNT/USDT","BOND/USDT","BOSON/USDT","/USDT","BTRST/USDT","CELO/USDT","CELR/USDT","CHZ/USDT","CLV/USDT","COMP/USDT","COTI/USDT","CRV/USDT","CTSI/USDT","DAR/USDT","DGB/USDT","DIA/USDT","DOGE/USDT","DOT/USDT","EGLD/USDT","ENJ/USDT","ENS/USDT","EOS/USDT","ETC/USDT","ETH/USDT","FET/USDT","FIL/USDT","FLOW/USDT","FLUX/USDT","FORTH/USDT","FTM/USDT","GAL/USDT","GALA/USDT","GLM/USDT","GRT/USDT","GTC/USDT","ICP/USDT","ILV/USDT","IMX/USDT","JAM/USDT","KAVA/USDT","KDA/USDT","KNC/USDT","KSM/USDT","LAZIO/USDT","LDO/USDT","LINK/USDT","LOKA/USDT","LOOM/USDT","LPT/USDT","LRC/USDT","LSK/USDT","LTC/USDT","LTO/USDT","MANA/USDT","MASK/USDT","MATIC/USDT","MKR/USDT","MXC/USDT","NEAR/USDT","NEO/USDT","NMR/USDT","OCEAN/USDT","OGN/USDT","OMG/USDT","ONE/USDT","ONT/USDT","OP/USDT","OXT/USDT","PAXG/USDT","POND/USDT","PORTO/USDT","PROM/USDT","QNT/USDT","QTUM/USDT","RAD/USDT","RARE/USDT","REEF/USDT","REN/USDT","REQ","REQ/USDT","RLC","RLC/USDT","RNDR","RNDR/USDT","ROSE","ROSE/USDT","RVN","SAND","SAND/USDT","SANTOS/USDT","SHIB/USDT","SKL/USDT","SLP/USDT","SNX/USDT","SOL/USDT","SPELL/USDT","STG/USDT","STMX/USDT","STORJ/USDT","SUSHI/USDT","SYS/USDT","T/USDT","TFUEL/USDT","THETA/USDT","TLM/USDT","TRAC/USDT","TRX/USDT","TUSD/USDT","UNI/USDT","USDC/USDT","USDT/USDT","VET/USDT","VITE/USDT","VOXEL/USDT","VTHO/USDT","WAXP/USDT","XLM/USDT","YFI/USDT","ZEC/USDT","ZEN/USDT","ZRX/USDT"],
+
+
