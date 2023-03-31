@@ -10381,3 +10381,180 @@ freqtrade.exceptions.OperationalException: Impossible to load Strategy 'sample_s
 2023-03-31 14:00:13,350 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': startup, 'status': "*Exchange:* `binanceus`\n*Stake per trade:* `100 USDT`\n*Minimum ROI:* `{'60': 0.01, '30': 0.02, '0': 0.04}`\n*Stoploss:* `-0.1`\n*Position adjustment:* `Off`\n*Timeframe:* `5m`\n*Strategy:* `SampleStrategy`"}
 2023-03-31 14:00:13,351 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': startup, 'status': "Searching for USDT pairs to buy and sell based on [{'VolumePairList': 'VolumePairList - top 20 volume pairs.'}]"}
 2023-03-31 14:00:18,382 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 14:01:18,448 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 14:02:18,516 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 14:03:18,585 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 14:04:18,637 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 14:05:21,021 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 14:06:21,083 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 14:06:58,449 - freqtrade.commands.trade_commands - INFO - SIGINT received, aborting ...
+2023-03-31 14:06:58,451 - freqtrade.commands.trade_commands - INFO - worker found ... calling exit
+2023-03-31 14:06:58,452 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': status, 'status': 'process died'}
+2023-03-31 14:06:58,453 - freqtrade.freqtradebot - INFO - Cleaning up modules ...
+2023-03-31 14:06:58,477 - freqtrade.rpc.rpc_manager - INFO - Cleaning up rpc modules ...
+2023-03-31 14:06:58,478 - freqtrade.rpc.rpc_manager - INFO - Cleaning up rpc.apiserver ...
+2023-03-31 14:06:58,479 - freqtrade.rpc.api_server.webserver - INFO - Stopping API Server
+2023-03-31 14:06:58,498 - uvicorn.error - INFO - Shutting down
+2023-03-31 15:24:01,393 - freqtrade.loggers - INFO - Verbosity set to 0
+2023-03-31 15:24:01,394 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2023-03-31 15:24:01,395 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2023-03-31 15:24:01,396 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2023-03-31 15:24:01,397 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2023-03-31 15:24:01,398 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 3 ...
+2023-03-31 15:24:01,561 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2023-03-31 15:24:01,564 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binanceus ...
+2023-03-31 15:24:01,565 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2023-03-31 15:24:01,576 - freqtrade.exchange.check_exchange - INFO - Exchange "binanceus" is officially supported by the Freqtrade development team.
+2023-03-31 15:24:01,577 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2023-03-31 15:24:01,649 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy Strategy from '/freqtrade/user_data/strategies/custom_strategy.py'...
+2023-03-31 15:24:01,651 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2023-03-31 15:24:01,653 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2023-03-31 15:24:01,654 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: 100.
+2023-03-31 15:24:01,655 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2023-03-31 15:24:01,656 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 3.
+2023-03-31 15:24:01,657 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.03, '20': 0.04, '0': 0.05}
+2023-03-31 15:24:01,658 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2023-03-31 15:24:01,658 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2023-03-31 15:24:01,659 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2023-03-31 15:24:01,660 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive: 0.01
+2023-03-31 15:24:01,661 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.02
+2023-03-31 15:24:01,662 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2023-03-31 15:24:01,663 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2023-03-31 15:24:01,664 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: False
+2023-03-31 15:24:01,665 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2023-03-31 15:24:01,666 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2023-03-31 15:24:01,667 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2023-03-31 15:24:01,668 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: 100
+2023-03-31 15:24:01,669 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2023-03-31 15:24:01,670 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 0
+2023-03-31 15:24:01,671 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2023-03-31 15:24:01,672 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2023-03-31 15:24:01,673 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: True
+2023-03-31 15:24:01,674 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2023-03-31 15:24:01,675 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2023-03-31 15:24:01,676 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2023-03-31 15:24:01,677 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2023-03-31 15:24:01,678 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2023-03-31 15:24:01,679 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2023-03-31 15:24:01,680 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 3
+2023-03-31 15:24:01,681 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2023-03-31 15:24:01,685 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2023-03-31 15:24:01,687 - freqtrade.exchange.exchange - INFO - Using CCXT 2.8.17
+2023-03-31 15:24:01,706 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance US"
+2023-03-31 15:24:02,168 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2023-03-31 15:24:02,450 - freqtrade.wallets - INFO - Wallets synced.
+2023-03-31 15:24:02,455 - freqtrade.resolvers.iresolver - INFO - Using resolved pairlist VolumePairList from '/freqtrade/freqtrade/plugins/pairlist/VolumePairList.py'...
+2023-03-31 15:24:02,632 - freqtrade.rpc.rpc_manager - INFO - Enabling rpc.api_server
+2023-03-31 15:24:02,964 - freqtrade.rpc.api_server.webserver - INFO - Starting HTTP Server at 0.0.0.0:8080
+2023-03-31 15:24:02,966 - freqtrade.rpc.api_server.webserver - WARNING - SECURITY WARNING - Local Rest Server listening to external connections
+2023-03-31 15:24:02,967 - freqtrade.rpc.api_server.webserver - WARNING - SECURITY WARNING - This is insecure please set to your loopback,e.g 127.0.0.1 in config.json
+2023-03-31 15:24:02,968 - freqtrade.rpc.api_server.webserver - INFO - Starting Local Rest Server.
+2023-03-31 15:24:02,974 - uvicorn.error - INFO - Started server process [1]
+2023-03-31 15:24:02,975 - uvicorn.error - INFO - Waiting for application startup.
+2023-03-31 15:24:02,976 - uvicorn.error - INFO - Application startup complete.
+2023-03-31 15:24:02,977 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+2023-03-31 15:24:02,982 - freqtrade.resolvers.iresolver - INFO - Using resolved pairlist VolumePairList from '/freqtrade/freqtrade/plugins/pairlist/VolumePairList.py'...
+2023-03-31 15:24:03,784 - freqtrade.plugins.pairlistmanager - INFO - Whitelist with 20 pairs: ['BTC/USDT', 'ETH/USDT', 'ADA/USDT', 'VET/USDT', 'DOGE/USDT', 'SHIB/USDT', 'BNB/USDT', 'SOL/USDT', 'ACH/USDT', 'GALA/USDT', 'MATIC/USDT', 'FTM/USDT', 'MASK/USDT', 'AVAX/USDT', 'XLM/USDT', 'OP/USDT', 'ONE/USDT', 'ATOM/USDT', 'ALGO/USDT', 'LINK/USDT']
+2023-03-31 15:24:03,786 - freqtrade.strategy.hyper - INFO - No params for buy found, using default values.
+2023-03-31 15:24:03,787 - freqtrade.strategy.hyper - INFO - No params for sell found, using default values.
+2023-03-31 15:24:03,789 - freqtrade.strategy.hyper - INFO - No params for protection found, using default values.
+2023-03-31 15:24:03,790 - freqtrade.plugins.protectionmanager - INFO - No protection Handlers defined.
+2023-03-31 15:24:03,791 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': status, 'status': 'running'}
+2023-03-31 15:24:03,792 - freqtrade.worker - INFO - Changing state to: RUNNING
+2023-03-31 15:24:03,793 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': warning, 'status': 'Dry run is enabled. All trades are simulated.'}
+2023-03-31 15:24:03,793 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': startup, 'status': "*Exchange:* `binanceus`\n*Stake per trade:* `100 USDT`\n*Minimum ROI:* `{'60': 0.01, '30': 0.03, '20': 0.04, '0': 0.05}`\n*Stoploss:* `-0.1`\n*Position adjustment:* `Off`\n*Timeframe:* `5m`\n*Strategy:* `Strategy`"}
+2023-03-31 15:24:03,794 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': startup, 'status': "Searching for USDT pairs to buy and sell based on [{'VolumePairList': 'VolumePairList - top 20 volume pairs.'}]"}
+2023-03-31 15:24:08,828 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 15:24:44,689 - uvicorn.error - INFO - ('172.20.0.1', 45608) - "WebSocket /api/v1/message/ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJ1IjoiZnJlcXRyYWRlciJ9LCJleHAiOjE2ODAyNzcxODQsImlhdCI6MTY4MDI3NjI4NCwidHlwZSI6ImFjY2VzcyJ9.MNcD6CbsKXvQCXAvXqmUXGmkqGWpz9WN990aAs4WWkE" [accepted]
+2023-03-31 15:24:44,691 - freqtrade.rpc.api_server.ws.channel - INFO - Connected to channel - WebSocketChannel(77d23af0, ('172.20.0.1', 45608))
+2023-03-31 15:24:44,692 - uvicorn.error - INFO - connection open
+2023-03-31 15:24:44,859 - uvicorn.error - INFO - ('172.20.0.1', 45624) - "WebSocket /api/v1/message/ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJ1IjoiZnJlcXRyYWRlciJ9LCJleHAiOjE2ODAyNzcxODQsImlhdCI6MTY4MDI3NjI4NCwidHlwZSI6ImFjY2VzcyJ9.MNcD6CbsKXvQCXAvXqmUXGmkqGWpz9WN990aAs4WWkE" [accepted]
+2023-03-31 15:24:44,860 - freqtrade.rpc.api_server.ws.channel - INFO - Connected to channel - WebSocketChannel(fb8747c8, ('172.20.0.1', 45624))
+2023-03-31 15:24:44,861 - uvicorn.error - INFO - connection open
+2023-03-31 15:25:11,011 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 15:25:16,291 - freqtrade.rpc.api_server.ws.channel - INFO - Disconnected from channel - WebSocketChannel(fb8747c8, ('172.20.0.1', 45624))
+2023-03-31 15:25:16,293 - freqtrade.rpc.api_server.ws.channel - INFO - Disconnected from channel - WebSocketChannel(77d23af0, ('172.20.0.1', 45608))
+2023-03-31 15:25:16,294 - uvicorn.error - INFO - connection closed
+2023-03-31 15:25:16,296 - uvicorn.error - INFO - connection closed
+2023-03-31 15:25:28,625 - freqtrade.commands.trade_commands - INFO - SIGINT received, aborting ...
+2023-03-31 15:25:28,627 - freqtrade.commands.trade_commands - INFO - worker found ... calling exit
+2023-03-31 15:25:28,629 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': status, 'status': 'process died'}
+2023-03-31 15:25:28,630 - freqtrade.freqtradebot - INFO - Cleaning up modules ...
+2023-03-31 15:25:28,638 - freqtrade.rpc.rpc_manager - INFO - Cleaning up rpc modules ...
+2023-03-31 15:25:28,639 - freqtrade.rpc.rpc_manager - INFO - Cleaning up rpc.apiserver ...
+2023-03-31 15:25:28,641 - freqtrade.rpc.api_server.webserver - INFO - Stopping API Server
+2023-03-31 15:25:28,657 - uvicorn.error - INFO - Shutting down
+2023-03-31 15:25:28,759 - uvicorn.error - INFO - Waiting for application shutdown.
+2023-03-31 15:25:28,761 - uvicorn.error - INFO - Application shutdown complete.
+2023-03-31 15:25:28,762 - uvicorn.error - INFO - Finished server process [1]
+2023-03-31 15:26:01,584 - freqtrade.loggers - INFO - Verbosity set to 0
+2023-03-31 15:26:01,585 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2023-03-31 15:26:01,586 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2023-03-31 15:26:01,587 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2023-03-31 15:26:01,588 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2023-03-31 15:26:01,589 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 3 ...
+2023-03-31 15:26:01,737 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2023-03-31 15:26:01,740 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binanceus ...
+2023-03-31 15:26:01,742 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2023-03-31 15:26:01,753 - freqtrade.exchange.check_exchange - INFO - Exchange "binanceus" is officially supported by the Freqtrade development team.
+2023-03-31 15:26:01,754 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2023-03-31 15:26:01,824 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy Strategy from '/freqtrade/user_data/strategies/custom_strategy.py'...
+2023-03-31 15:26:01,826 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2023-03-31 15:26:01,827 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2023-03-31 15:26:01,828 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: 100.
+2023-03-31 15:26:01,829 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2023-03-31 15:26:01,830 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 3.
+2023-03-31 15:26:01,831 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.03, '20': 0.04, '0': 0.05}
+2023-03-31 15:26:01,831 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2023-03-31 15:26:01,832 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2023-03-31 15:26:01,833 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2023-03-31 15:26:01,834 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive: 0.01
+2023-03-31 15:26:01,835 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.02
+2023-03-31 15:26:01,836 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2023-03-31 15:26:01,837 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2023-03-31 15:26:01,837 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: False
+2023-03-31 15:26:01,838 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2023-03-31 15:26:01,839 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2023-03-31 15:26:01,840 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2023-03-31 15:26:01,841 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: 100
+2023-03-31 15:26:01,842 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2023-03-31 15:26:01,843 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 0
+2023-03-31 15:26:01,844 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2023-03-31 15:26:01,845 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2023-03-31 15:26:01,845 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: True
+2023-03-31 15:26:01,846 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2023-03-31 15:26:01,847 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2023-03-31 15:26:01,848 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2023-03-31 15:26:01,849 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2023-03-31 15:26:01,850 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2023-03-31 15:26:01,851 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2023-03-31 15:26:01,851 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 3
+2023-03-31 15:26:01,852 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2023-03-31 15:26:01,857 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2023-03-31 15:26:01,858 - freqtrade.exchange.exchange - INFO - Using CCXT 2.8.17
+2023-03-31 15:26:01,877 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance US"
+2023-03-31 15:26:02,390 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2023-03-31 15:26:02,671 - freqtrade.wallets - INFO - Wallets synced.
+2023-03-31 15:26:02,676 - freqtrade.resolvers.iresolver - INFO - Using resolved pairlist VolumePairList from '/freqtrade/freqtrade/plugins/pairlist/VolumePairList.py'...
+2023-03-31 15:26:02,787 - freqtrade.rpc.rpc_manager - INFO - Enabling rpc.api_server
+2023-03-31 15:26:03,116 - freqtrade.rpc.api_server.webserver - INFO - Starting HTTP Server at 0.0.0.0:8080
+2023-03-31 15:26:03,118 - freqtrade.rpc.api_server.webserver - WARNING - SECURITY WARNING - Local Rest Server listening to external connections
+2023-03-31 15:26:03,120 - freqtrade.rpc.api_server.webserver - WARNING - SECURITY WARNING - This is insecure please set to your loopback,e.g 127.0.0.1 in config.json
+2023-03-31 15:26:03,121 - freqtrade.rpc.api_server.webserver - INFO - Starting Local Rest Server.
+2023-03-31 15:26:03,126 - uvicorn.error - INFO - Started server process [1]
+2023-03-31 15:26:03,127 - uvicorn.error - INFO - Waiting for application startup.
+2023-03-31 15:26:03,128 - uvicorn.error - INFO - Application startup complete.
+2023-03-31 15:26:03,129 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+2023-03-31 15:26:03,134 - freqtrade.resolvers.iresolver - INFO - Using resolved pairlist VolumePairList from '/freqtrade/freqtrade/plugins/pairlist/VolumePairList.py'...
+2023-03-31 15:26:03,974 - freqtrade.plugins.pairlistmanager - INFO - Whitelist with 20 pairs: ['BTC/USDT', 'ETH/USDT', 'ADA/USDT', 'VET/USDT', 'DOGE/USDT', 'SHIB/USDT', 'BNB/USDT', 'SOL/USDT', 'ACH/USDT', 'GALA/USDT', 'MATIC/USDT', 'FTM/USDT', 'MASK/USDT', 'AVAX/USDT', 'XLM/USDT', 'OP/USDT', 'ONE/USDT', 'USDC/USDT', 'ATOM/USDT', 'ALGO/USDT']
+2023-03-31 15:26:03,976 - freqtrade.strategy.hyper - INFO - No params for buy found, using default values.
+2023-03-31 15:26:03,977 - freqtrade.strategy.hyper - INFO - No params for sell found, using default values.
+2023-03-31 15:26:03,978 - freqtrade.strategy.hyper - INFO - No params for protection found, using default values.
+2023-03-31 15:26:03,979 - freqtrade.plugins.protectionmanager - INFO - No protection Handlers defined.
+2023-03-31 15:26:03,980 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': status, 'status': 'running'}
+2023-03-31 15:26:03,981 - freqtrade.worker - INFO - Changing state to: RUNNING
+2023-03-31 15:26:03,982 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': warning, 'status': 'Dry run is enabled. All trades are simulated.'}
+2023-03-31 15:26:03,983 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': startup, 'status': "*Exchange:* `binanceus`\n*Stake per trade:* `100 USDT`\n*Minimum ROI:* `{'60': 0.01, '30': 0.03, '20': 0.04, '0': 0.05}`\n*Stoploss:* `-0.1`\n*Position adjustment:* `Off`\n*Timeframe:* `5m`\n*Strategy:* `Strategy`"}
+2023-03-31 15:26:03,983 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': startup, 'status': "Searching for USDT pairs to buy and sell based on [{'VolumePairList': 'VolumePairList - top 20 volume pairs.'}]"}
+2023-03-31 15:26:09,017 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
+2023-03-31 15:27:09,078 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2023.2', state='RUNNING'
