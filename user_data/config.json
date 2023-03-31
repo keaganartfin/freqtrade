@@ -1,0 +1,83 @@
+
+{
+    "max_open_trades": 10,
+    "stake_currency": "USDT",
+    "stake_amount": 100,
+    "tradable_balance_ratio": 0.99,
+    "fiat_display_currency": "USD",
+    "dry_run": true,
+    "dry_run_wallet": 1000,
+    "cancel_open_orders_on_exit": false,
+    "trading_mode": "spot",
+    "margin_mode": "",
+    "unfilledtimeout": {
+        "entry": 10,
+        "exit": 10,
+        "exit_timeout_count": 0,
+        "unit": "minutes"
+    },
+    "entry_pricing": {
+        "price_side": "same",
+        "use_order_book": true,
+        "order_book_top": 1,
+        "price_last_balance": 0.0,
+        "check_depth_of_market": {
+            "enabled": false,
+            "bids_to_ask_delta": 1
+        }
+    },
+    "exit_pricing":{
+        "price_side": "same",
+        "use_order_book": true,
+        "order_book_top": 1
+    },
+    "exchange": {
+        "name": "kucoin",
+        "key": "642717aad7b99b0001210ec8",
+        "secret": "3948b912-9a25-4a88-a206-8851ee500ee3",
+        "ccxt_config": {
+            "enableRateLimit": true
+          },
+        "ccxt_async_config": {},
+        "pair_whitelist": ["1EARTH/USDT","1INCH/USDT","2CRZ/USDT","AAVE/USDT","AAVE3L/USDT","AAVE3S/USDT","ABBC/USDT","ACA/USDT","ACE/USDT","ACH/USDT","ACOIN/USDT","ACQ/USDT","ACS/USDT","ACT/USDT","ADA/USDT","ADA3L/USDT","ADA3S/USDT","ADS/USDT","ADX/USDT","AERGO/USDT","AFK/USDT","AGIX/USDT","AGIX2L/USDT","AGIX2S/USDT","AGLD/USDT","AI/USDT","AIOZ/USDT","AIPAD/USDT","AKRO/USDT","AKT/USDT","ALEPH/USDT","ALGO/USDT","ALICE/USDT","ALPHA/USDT","ALPINE/USDT","ALT/USDT","AMB/USDT","AMP/USDT","AMPL/USDT","ANC/USDT","ANKR/USDT","ANT/USDT","AOA/USDT","AOG/USDT","APE/USDT","APE3L/USDT","APE3S/USDT","API3/USDT","APL/USDT","APT/USDT","APT2L/USDT","APT2S/USDT","AR/USDT","ARB/USDT","ARB3L/USDT","ARB3S/USDT","ARKER/USDT","ARNM/USDT","ARPA/USDT","ARRR/USDT","ARX/USDT","ASD/USDT","ASTR/USDT","ASTRA/USDT","ATA/USDT","ATOM/USDT","ATOM3L/USDT","ATOM3S/USDT","AUDIO/USDT","AURORA/USDT","AURY/USDT","AUSD/USDT","AVA/USDT","AVAX/USDT","AVAX3L/USDT","AVAX3S/USDT","AXS/USDT","AXS3L/USDT","AXS3S/USDT","AZERO/USDT","BAL/USDT","BAND/USDT","BASIC/USDT","BAT/USDT","BAX/USDT","BBC/USDT","BCH/USDT","BCH3L/USDT","BCH3S/USDT","BDX/USDT","BEAT/USDT","BEPRO/USDT","BFC/USDT","BICO/USDT","BIFIF/USDT","BLOK/USDT","BLUR/USDT","BLUR2L/USDT","BLUR2S/USDT","BLZ/USDT","BNB/USDT","BNB3L/USDT","BNB3S/USDT"],
+        "pair_blacklist": [
+        ]
+    },
+    "pairlists": [
+        {
+            "method": "StaticPairList",
+            "number_assets": 20,
+            "sort_key": "quoteVolume",
+            "min_value": 0,
+            "refresh_period": 1800
+        }
+    ],
+    "telegram": {
+        "enabled": false,
+        "token": "",
+        "chat_id": ""
+    },
+    "api_server": {
+        "enabled": true,
+        "listen_ip_address": "0.0.0.0",
+        "listen_port": 8080,
+        "verbosity": "error",
+        "enable_openapi": false,
+        "jwt_secret_key": "46d208b02e1cee4efe57801b390e0b481ab2203c2a390e5bb1b9a447c645c68c",
+        "ws_token": "zp7gwm9PbwGHF2zbe33eCED8X70HecPItA",
+        "CORS_origins": [],
+        "username": "freqtrader",
+        "password": "a1b2c3d4"
+    },
+    "bot_name": "freqtrade",
+    "initial_state": "running",
+    "force_entry_enable": false,
+    "internals": {
+        "process_throttle_secs": 5
+    },
+    "strategy": "CustomStrategy",
+    "strategy_path": "user_data/strategies/",
+    "backtesting": {
+      "timerange": "20210101-20211231"
+    }
+}
