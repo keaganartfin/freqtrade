@@ -9,7 +9,7 @@ Go to localhost:8080
   username: Freqtrader
   password: a1b2c3d4
 
-
+Keywords to refer to, IE, "For my next question, please refer to "freqtrade docs", can you show me how i can ..."
 "freqtrade docs"
 "strategy data"
 "Python updated libraries"

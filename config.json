@@ -1,0 +1,83 @@
+
+{
+    "max_open_trades": 10,
+    "stake_currency": "USDT",
+    "stake_amount": 100,
+    "tradable_balance_ratio": 0.99,
+    "fiat_display_currency": "USD",
+    "dry_run": true,
+    "dry_run_wallet": 1000,
+    "cancel_open_orders_on_exit": false,
+    "trading_mode": "spot",
+    "margin_mode": "",
+    "unfilledtimeout": {
+        "entry": 10,
+        "exit": 10,
+        "exit_timeout_count": 0,
+        "unit": "minutes"
+    },
+    "entry_pricing": {
+        "price_side": "same",
+        "use_order_book": true,
+        "order_book_top": 1,
+        "price_last_balance": 0.0,
+        "check_depth_of_market": {
+            "enabled": false,
+            "bids_to_ask_delta": 1
+        }
+    },
+    "exit_pricing":{
+        "price_side": "same",
+        "use_order_book": true,
+        "order_book_top": 1
+    },
+    "exchange": {
+        "name": "binanceus",
+        "key": "s3Vxo9QTrzkKJpYVgvDkHcztUC8u4OfxdmbHVKlrGWTgCdOoVwU5CkNAC5NTTl48",
+        "secret": "d2mwHC0w1khFRpTVOCyhNV7cxo6buOVTUtXhjCIAoreSznhgGmJVROUTTj0oaNQE",
+        "ccxt_config": {
+            "enableRateLimit": true
+          },
+        "ccxt_async_config": {},
+        "pair_whitelist": ["1INCH/USD","1INCH/USDT","AAVE/USD","AAVE/USDT","ACH/USD","ACH/USDT","ADA/BTC","ADA/ETH","ADA/USD","ADA/USDC","ADA/USDT","ALGO/USD","ALGO/USDT","ALICE/USD","ALICE/USDT","ALPINE/USD","ALPINE/USDT","ANKR/USD","ANT/USD","ANT/USDT","APE/USD","APE/USDT","API3/USD","API3/USDT","APT/USD","APT/USDT","ASTR/USD","ASTR/USDT","ATOM/BTC","ATOM/USD","ATOM/USDT","AUDIO/USD","AUDIO/USDT","AVAX/BTC","AVAX/USD","AVAX/USDT","AXL/USD","AXL/USDT","AXS/USD","AXS/USDT","BAL/USD","BAL/USDT","BAND/USD","BAND/USDT","BAT/USD","BAT/USDT","BCH/BTC","BCH/USD","BCH/USDT","BICO/USD","BICO/USDT","BNB/BTC","BNB/BUSD","BNB/USD","BNB/USDT","BNT/USD","BNT/USDT","BOND/USD","BOND/USDT","BOSON/USD","BOSON/USDT","BTC/BUSD","BTC/DAI","BTC/USD","BTC/USDC","BTC/USDT","BTRST/USD","BTRST/USDT","CELO/USD","CELO/USDT","CELR/USD","CELR/USDT","CHZ/USD","CHZ/USDT","CLV/USD","CLV/USDT","COMP/USD","COMP/USDT","COTI/USD","COTI/USDT","CRV/USD","CRV/USDT","CTSI/USD","CTSI/USDT","DAI/USD","DAR/USD","DAR/USDT","DASH/USD","DGB/USD","DGB/USDT","DIA/USD","DIA/USDT","DOGE/BTC","DOGE/USD","DOGE/USDT","DOT/BTC","DOT/USD","DOT/USDT","EGLD/USD","EGLD/USDT","ENJ/USD","ENJ/USDT","ENS/USD","ENS/USDT","EOS/USD","EOS/USDT","ETC/USD","ETC/USDT","ETH/BTC","ETH/BUSD","ETH/DAI","ETH/USD","ETH/USDC","ETH/USDT","FET/USD","FET/USDT","FIL/USD","FIL/USDT","FLOW/USD","FLOW/USDT","FLUX/USD","FLUX/USDT","FORTH/USD","FORTH/USDT","FTM/USD","FTM/USDT","GAL/USD","GAL/USDT","GALA/USD","GALA/USDT","GLM/USD","GLM/USDT","GRT/USD","GRT/USDT","GTC/USD","GTC/USDT","HBAR/BUSD","HBAR/USD","ICP/USD","ICP/USDT","ICX/USD","ILV/USD","ILV/USDT","IMX/USD","IMX/USDT","IOTA/USD","JAM/USD","JAM/USDT","KAVA/USD","KAVA/USDT","KDA/USD","KDA/USDT","KNC/USD","KNC/USDT","KSM/USD","KSM/USDT","LAZIO/USD","LAZIO/USDT","LDO/USD","LDO/USDT","LINK/BTC","LINK/USD","LINK/USDT","LOKA/USD","LOKA/USDT","LOOM/USD","LOOM/USDT","LPT/USD","LPT/USDT","LRC/BTC","LRC/USD","LRC/USDT","LSK/USD","LSK/USDT","LTC/BTC","LTC/USD","LTC/USDT","LTO/USD","LTO/USDT","MANA/BTC","MANA/USD","MANA/USDT","MASK/USD","MASK/USDT","MATIC/BTC","MATIC/USD","MATIC/USDT","MKR/USD","MKR/USDT","MXC/USD","MXC/USDT","NEAR/USD","NEAR/USDT","NEO/USD","NEO/USDT","NMR/USD","NMR/USDT","OCEAN/USD","OCEAN/USDT","OGN/USD","OGN/USDT","OMG/USD","OMG/USDT","ONE/BUSD","ONE/USD","ONE/USDT","ONT/USD","ONT/USDT","OP/USD","OP/USDT","OXT/USD","OXT/USDT","PAXG/USD","PAXG/USDT","POLYX/USD","POND/USD","POND/USDT","PORTO/USD","PORTO/USDT","PROM/USD","PROM/USDT","QNT/USD","QNT/USDT","QTUM/USD","QTUM/USDT","RAD/USD","RAD/USDT","RARE/USD","RARE/USDT","REEF/USD","REEF/USDT","REN/USD","REN/USDT","REQ/USD","REQ/USDT","RLC/USD","RLC/USDT","RNDR/USD","RNDR/USDT","ROSE/USD","ROSE/USDT","RVN/USD","SAND/USD","SAND/USDT","SANTOS/USD","SANTOS/USDT","SHIB/USD","SHIB/USDT","SKL/USD","SKL/USDT","SLP/USD","SLP/USDT","SNX/USD","SNX/USDT","SOL/BTC","SOL/USD","SOL/USDC","SOL/USDT","SPELL/USD","SPELL/USDT","STG/USD","STG/USDT","STMX/USD","STMX/USDT","STORJ/USD","STORJ/USDT","SUSHI/USD","SUSHI/USDT","SYS/USD","SYS/USDT","T/USD","T/USDT","TFUEL/USD","TFUEL/USDT","THETA/USD","THETA/USDT","TLM/USD","TLM/USDT","TRAC/USD","TRAC/USDT","TRX/BTC","TRX/USD","TRX/USDT","TUSD/USD","TUSD/USDT","UNI/BTC","UNI/USD","UNI/USDT","USDC/USD","USDC/USDT","USDT/USD","VET/BTC","VET/USD","VET/USDT","VITE/USD","VITE/USDT","VOXEL/USD","VOXEL/USDT","VTHO/USD","VTHO/USDT","WAVES/USD","WAXP/USD","WAXP/USDT","WBTC/BTC","XLM/USD","XLM/USDT","XNO/USD","XTZ/BTC","XTZ/USD","YFI/USD","YFI/USDT","ZEC/USD","ZEC/USDT","ZEN/USD","ZEN/USDT","ZIL/USD","ZRX/USD","ZRX/USDT"],
+        "pair_blacklist": [
+        ]
+    },
+    "pairlists": [
+        {
+            "method": "VolumePairList",
+            "number_assets": 20,
+            "sort_key": "quoteVolume",
+            "min_value": 0,
+            "refresh_period": 1800
+        }
+    ],
+    "telegram": {
+        "enabled": false,
+        "token": "",
+        "chat_id": ""
+    },
+    "api_server": {
+        "enabled": true,
+        "listen_ip_address": "0.0.0.0",
+        "listen_port": 8080,
+        "verbosity": "error",
+        "enable_openapi": false,
+        "jwt_secret_key": "9e66d6fc37e4e6dd8b15862062c85d0f3429aee6739a1b2819c433ea51f44844",
+        "ws_token": "wsnGKp3tvWGUmnHr-CWBoJPPeYNpRFV53Q",
+        "CORS_origins": [],
+        "username": "freqtrader",
+        "password": "a1b2c3d4"
+    },
+    "bot_name": "freqtrade",
+    "initial_state": "running",
+    "force_entry_enable": false,
+    "internals": {
+        "process_throttle_secs": 5
+    },
+    "strategy": "CustomStrategy",
+    "strategy_path": "user_data/strategies/",
+    "backtesting": {
+      "timerange": "20210101-20211231"
+    }
+}
