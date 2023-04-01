@@ -6,7 +6,9 @@ from pandas import DataFrame
 # -------------------------------- 
 
 import talib.abstract as ta
+from finta import TA
 import freqtrade.vendor.qtpylib.indicators as qtpylib
+from indicators.IchimokuIndicator import IchimokuIndicator
 import numpy # noqa
 
 
@@ -76,82 +78,119 @@ class CustomStrategy(IStrategy):
         return []
 
     def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
-        """
-        Adds several different TA indicators to the given DataFrame
-
-        Performance Note: For the best performance be frugal on the number of indicators
-        you are using. Let uncomment only the indicator you are using in your strategies
-        or your hyperopt configuration, otherwise you will waste your memory and CPU usage.
-        """
-
-        # Stochastics Slow
-        stoch = ta.STOCH(dataframe, fastk_period=14, slowk_period=3, slowd_period=3)
-        dataframe['slowk'] = stoch['slowk']
-        dataframe['slowd'] = stoch['slowd']
-        
-        # EMA - Exponential Moving Average
-        dataframe['ema50'] = ta.EMA(dataframe, timeperiod=50)
-        dataframe['ema100'] = ta.EMA(dataframe, timeperiod=100)
-
-        # RSI
-        dataframe['rsi'] = ta.RSI(dataframe, timeperiod=14)
-
-        # Inverse Fisher transform on RSI, values [-1.0, 1.0] (https://goo.gl/2JGGoy)
-        rsi = 0.1 * (dataframe['rsi'] - 50)
-        dataframe['fisher_rsi'] = (numpy.exp(2 * rsi) - 1) / (numpy.exp(2 * rsi) + 1)
-
-        # Bollinger bands
-        bollinger = ta.BBANDS(dataframe, timeperiod=self.bollinger_bands_window, nbdevup=self.bollinger_bands_std, nbdevdn=self.bollinger_bands_std)
+        # Bollinger Bands
+        bollinger = ta.BBANDS(dataframe, timeperiod=20)
         dataframe['bb_lowerband'] = bollinger['lowerband']
         dataframe['bb_middleband'] = bollinger['middleband']
         dataframe['bb_upperband'] = bollinger['upperband']
 
-        # SAR Parabol
+        # RSI
+        dataframe['rsi'] = ta.RSI(dataframe)
+
+        # Moving Averages
+        dataframe['ema_short'] = ta.EMA(dataframe, timeperiod=5)
+        dataframe['ema_long'] = ta.EMA(dataframe, timeperiod=21)
+
+        # MACD
+        macd = ta.MACD(dataframe)
+        dataframe['macd'] = macd['macd']
+        dataframe['macdsignal'] = macd['macdsignal']
+
+        # ADX
+        dataframe['adx'] = ta.ADX(dataframe)
+
+        # Parabolic SAR
         dataframe['sar'] = ta.SAR(dataframe)
 
-        # Hammer: values [0, 100]
-        dataframe['CDLHAMMER'] = ta.CDLHAMMER(dataframe)
+        # Ichimoku Cloud
+        ichimoku = IchimokuIndicator()
+        dataframe = ichimoku.calculate(dataframe)
+
+        
+
+
+
+        
+        # Stochastic Oscillator
+        stoch = ta.STOCH(dataframe)
+        dataframe['slowk'] = stoch['slowk']
+        dataframe['slowd'] = stoch['slowd']
+
+        # Supertrend
+        dataframe['supertrend'] = ta.SUPERTREND(dataframe)
 
         return dataframe
 
-    def populate_entry_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
-        """
-        Based on TA indicators, populates the buy signal for the given dataframe
-        :param dataframe: DataFrame
-        :return: DataFrame with buy column
-        """
+
+    def populate_buy_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         dataframe.loc[
             (
+                # Bollinger Bands
+                (dataframe['close'] < dataframe['bb_lowerband']) &
+
+                # RSI
                 (dataframe['rsi'] < 30) &
+
+                # Moving Averages
+                (dataframe['ema_short'] > dataframe['ema_long']) &
+
+                # MACD
+                (dataframe['macd'] > dataframe['macdsignal']) &
+
+                # ADX
+                (dataframe['adx'] > 25) &
+
+                # Parabolic SAR
+                (dataframe['close'] > dataframe['sar']) &
+
+                # Ichimoku Cloud
+                (dataframe['close'] > dataframe['senkou_span_a']) &
+                (dataframe['close'] > dataframe['senkou_span_b']) &
+
+                # Stochastic Oscillator
                 (dataframe['slowk'] < 20) &
                 (dataframe['slowd'] < 20) &
-                (dataframe['ema50'] > dataframe['ema100'])
-            ) | (
-                (dataframe['bb_lowerband'] > dataframe['close']) 
-            ) | (
-                (dataframe['CDLHAMMER'] == 100)
+
+                # Supertrend
+                (dataframe['close'] > dataframe['supertrend'])
             ),
-            'enter_long'] = 1
+            'buy'] = 1
 
         return dataframe
 
-    def populate_exit_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
-        """
-        Based on TA indicators, populates the sell signal for the given dataframe
-        :param dataframe: DataFrame
-        :return: DataFrame with buy column
-        """
+    def populate_sell_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         dataframe.loc[
-            (   
+            (
+                # Bollinger Bands
+                (dataframe['close'] > dataframe['bb_upperband']) &
+
+                # RSI
                 (dataframe['rsi'] > 70) &
+
+                # Moving Averages
+                (dataframe['ema_short'] < dataframe['ema_long']) &
+
+                # MACD
+                (dataframe['macd'] < dataframe['macdsignal']) &
+
+                # ADX
+                (dataframe['adx'] > 25) &
+
+                # Parabolic SAR
+                (dataframe['close'] < dataframe['sar']) &
+
+                # Ichimoku Cloud
+                (dataframe['close'] < dataframe['senkou_span_a']) &
+                (dataframe['close'] < dataframe['senkou_span_b']) &
+
+                # Stochastic Oscillator
                 (dataframe['slowk'] > 80) &
                 (dataframe['slowd'] > 80) &
-                (dataframe['ema50'] < dataframe['ema100'])
-            ) | (
-                (dataframe['sar'] > dataframe['close']) &
-                (dataframe['fisher_rsi'] > 0.3)
-            ) | (
-                (dataframe['close'] > dataframe['bb_upperband'])
+
+                # Supertrend
+                (dataframe['close'] < dataframe['supertrend'])
             ),
-            'exit_long'] = 1
+            'sell'] = 1
+
         return dataframe
+

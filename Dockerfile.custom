@@ -1,0 +1,4 @@
+FROM freqtradeorg/freqtrade:stable
+
+# Install finta library
+RUN pip install finta
