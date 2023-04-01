@@ -137,247 +137,79 @@ berlinguyinca/CCIStrategy.py: The Commodity Channel Index (CCI) is an oscillator
 
 
 
-# --- Do not remove these libs ---
-from freqtrade.strategy import IStrategy
-from typing import Dict, List
-from functools import reduce
-from pandas import DataFrame
-# -------------------------------- 
+This was the response from the console with the suggested changes:
 
-import talib.abstract as ta
-from finta import TA
-import freqtrade.vendor.qtpylib.indicators as qtpylib
-from concurrent.futures import ThreadPoolExecutor
-from indicators import *
-import numpy as np # noqa
+=========================================================== ENTER TAG STATS ===========================================================
+|   TAG |   Entries |   Avg Profit % |   Cum Profit % |   Tot Profit USDT |   Tot Profit % |   Avg Duration |   Win  Draw  Loss  Win% |
+|-------+-----------+----------------+----------------+-------------------+----------------+----------------+-------------------------|
+| TOTAL |      7599 |          -0.12 |        -903.11 |          -903.859 |         -90.39 |        5:10:00 |  6709     0   890  88.3 |
+===================================================== EXIT REASON STATS =====================================================
+|   Exit Reason |   Exits |   Win  Draws  Loss  Win% |   Avg Profit % |   Cum Profit % |   Tot Profit USDT |   Tot Profit % |
+|---------------+---------+--------------------------+----------------+----------------+-------------------+----------------|
+|           roi |    3965 |   3965     0     0   100 |           1.63 |        6454.34 |           6460.48 |         645.43 |
+|   exit_signal |    2744 |   2744     0     0   100 |           0.62 |        1700.54 |           1702.14 |         170.05 |
+|     stop_loss |     890 |      0     0   890     0 |         -10.18 |       -9057.99 |          -9066.48 |        -905.8  |
+======================================================= LEFT OPEN TRADES REPORT ========================================================
+|   Pair |   Entries |   Avg Profit % |   Cum Profit % |   Tot Profit USDT |   Tot Profit % |   Avg Duration |   Win  Draw  Loss  Win% |
+|--------+-----------+----------------+----------------+-------------------+----------------+----------------+-------------------------|
+|  TOTAL |         0 |           0.00 |           0.00 |             0.000 |           0.00 |           0:00 |     0     0     0     0 |
+================== SUMMARY METRICS ==================
+| Metric                      | Value               |
+|-----------------------------+---------------------|
+| Backtesting from            | 2021-01-01 00:00:00 |
+| Backtesting to              | 2023-03-31 20:30:00 |
+| Max open trades             | 10                  |
+|                             |                     |
+| Total/Daily Avg Trades      | 7599 / 9.28         |
+| Starting balance            | 1000 USDT           |
+| Final balance               | 96.141 USDT         |
+| Absolute profit             | -903.859 USDT       |
+| Total profit %              | -90.39%             |
+| CAGR %                      | -64.79%             |
+| Sortino                     | -4644.98            |
+| Sharpe                      | -5.55               |
+| Calmar                      | -2.22               |
+| Profit factor               | 0.90                |
+| Expectancy                  | -0.01               |
+| Trades per day              | 9.28                |
+| Avg. daily profit %         | -0.11%              |
+| Avg. stake amount           | 99.994 USDT         |
+| Total trade volume          | 759855.38 USDT      |
+|                             |                     |
+| Best Pair                   | AVAX/USDT 105.27%   |
+| Worst Pair                  | AAVE/USDT -260.11%  |
+| Best trade                  | API3/USDT 6.05%     |
+| Worst trade                 | ATOM/USDT -10.18%   |
+| Best day                    | 103.757 USDT        |
+| Worst day                   | -320.122 USDT       |
+| Days win/draw/lose          | 252 / 20 / 144      |
+| Avg. Duration Winners       | 4:02:00             |
+| Avg. Duration Loser         | 13:42:00            |
+| Rejected Entry signals      | 7                   |
+| Entry/Exit Timeouts         | 0 / 0               |
+|                             |                     |
+| Min balance                 | 96.141 USDT         |
+| Max balance                 | 1912.54 USDT        |
+| Max % of account underwater | 94.97%              |
+| Absolute Drawdown (Account) | 94.97%              |
+| Absolute Drawdown           | 1816.399 USDT       |
+| Drawdown high               | 912.54 USDT         |
+| Drawdown low                | -903.859 USDT       |
+| Drawdown Start              | 2021-04-17 14:20:00 |
+| Drawdown End                | 2022-02-20 14:15:00 |
+| Market change               | -6.73%              |
+=====================================================
 
+the goals of this project are as follows:
 
+Completely Automated, I want to turn this bot on when I wake up in the morning and shut it off before I go to sleep, or maybe keep it on 24 hours a day depending on the state of the profits.
 
-def supertrend(dataframe, period=7, multiplier=3):
-    hl2 = (dataframe['high'] + dataframe['low']) / 2
-    atr = ta.ATR(dataframe, timeperiod=period)
-    upper_band = hl2 + (multiplier * atr)
-    lower_band = hl2 - (multiplier * atr)
+Use machine learning to implement better predictability when trading. (I am not sure if deep learning models would be better for this purpose or if we shouldn't add deep learning models to AA4 please give me your thoughts on this)
 
-    dataframe['supertrend_upper'] = upper_band
-    dataframe['supertrend_lower'] = lower_band
+To make the most "total profit percentage" we can. Please walk me through how we can increase the "-90.39%" to as high as possible. 
 
-    dataframe['in_uptrend'] = True
-    for current in range(1, len(dataframe)):
-        previous = current - 1
+Please use the data libraries we referred to earlier as "freqtrade docs", "Python updated libraries", "general strategies", and "strategy data" to create a walkthrough guide that will best increase the performance of the AA4 and meet these goals. 
 
-        if dataframe['close'][current] > dataframe['supertrend_upper'][previous]:
-            dataframe.loc[current, 'in_uptrend'] = True
-        elif dataframe['close'][current] < dataframe['supertrend_lower'][previous]:
-            dataframe.loc[current, 'in_uptrend'] = False
-        else:
-            dataframe.loc[current, 'in_uptrend'] = dataframe['in_uptrend'][previous]
-            if dataframe['in_uptrend'][current] and dataframe['supertrend_lower'][current] < dataframe['supertrend_lower'][previous]:
-                dataframe.loc[current, 'supertrend_lower'] = dataframe['supertrend_lower'][previous]
-            if not dataframe['in_uptrend'][current] and dataframe['supertrend_upper'][current] > dataframe['supertrend_upper'][previous]:
-                dataframe.loc[current, 'supertrend_upper'] = dataframe['supertrend_upper'][previous]
+Also, what are your thoughts on possibly adding openai's API to AA4? Do you think this would be beneficial enough to go through the headache of adding it in, or the cost to run it in the application?
 
-    dataframe['supertrend'] = np.where(dataframe['in_uptrend'], dataframe['supertrend_lower'], dataframe['supertrend_upper'])
-    dataframe.drop(['supertrend_upper', 'supertrend_lower', 'in_uptrend'], axis=1, inplace=True)
-
-    return dataframe
-
-def process_pair(dataframe, metadata):
-    return CustomStrategy.populate_indicators(dataframe, metadata)
-
-# This class is a sample. Feel free to customize it.
-class CustomStrategy(IStrategy):
-    """
-    Strategy 002
-    author@: Gerald Lonlas
-    github@: https://github.com/freqtrade/freqtrade-strategies
-
-    How to use it?
-    > python3 ./freqtrade/main.py -s Strategy002
-    """
-
-    INTERFACE_VERSION: int = 3
-    # Minimal ROI designed for the strategy.
-    # This attribute will be overridden if the config file contains "minimal_roi"
-    minimal_roi = {
-        "60":  0.01,
-        "30":  0.03,
-        "20":  0.04,
-        "0":  0.05
-    }
-
-    # Optimal stoploss designed for the strategy
-    # This attribute will be overridden if the config file contains "stoploss"
-    stoploss = -0.10
-
-    # Optimal timeframe for the strategy
-    timeframe = '5m'
-
-    # trailing stoploss
-    trailing_stop = False
-    trailing_stop_positive = 0.01
-    trailing_stop_positive_offset = 0.02
-
-    # run "populate_indicators" only for new candle
-    process_only_new_candles = False
-
-    # Experimental settings (configuration will overide these if set)
-    use_exit_signal = True
-    exit_profit_only = True
-    ignore_roi_if_entry_signal = False
-
-    # Optional order type mapping
-    order_types = {
-        'entry': 'limit',
-        'exit': 'limit',
-        'stoploss': 'market',
-        'stoploss_on_exchange': False
-    }
-    # Add the Bollinger Bands parameters
-    bollinger_bands_std = 2.0
-    bollinger_bands_window = 20
-
-    def informative_pairs(self):
-        """
-        Define additional, informative pair/interval combinations to be cached from the exchange.
-        These pair/interval combinations are non-tradeable, unless they are part
-        of the whitelist as well.
-        For more information, please consult the documentation
-        :return: List of tuples in the format (pair, interval)
-            Sample: return [("ETH/USDT", "5m"),
-                            ("BTC/USDT", "15m"),
-                            ]
-        """
-        return []
-    
-    
-
-
-    def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
-        # Bollinger Bands
-        bollinger = ta.BBANDS(dataframe, timeperiod=20)
-        dataframe['bb_lowerband'] = bollinger['lowerband']
-        dataframe['bb_middleband'] = bollinger['middleband']
-        dataframe['bb_upperband'] = bollinger['upperband']
-
-        # RSI
-        dataframe['rsi'] = ta.RSI(dataframe)
-
-        # Moving Averages
-        dataframe['ema_short'] = ta.EMA(dataframe, timeperiod=5)
-        dataframe['ema_long'] = ta.EMA(dataframe, timeperiod=21)
-
-        # MACD
-        macd = ta.MACD(dataframe)
-        dataframe['macd'] = macd['macd']
-        dataframe['macdsignal'] = macd['macdsignal']
-
-        # ADX
-        dataframe['adx'] = ta.ADX(dataframe)
-
-        # Parabolic SAR
-        dataframe['sar'] = ta.SAR(dataframe)
-
-        # Ichimoku Cloud
-        ichimoku = IchimokuIndicator()
-        dataframe = ichimoku.calculate(dataframe)
-        
-        # Stochastic Oscillator
-        stoch = ta.STOCH(dataframe)
-        dataframe['slowk'] = stoch['slowk']
-        dataframe['slowd'] = stoch['slowd']
-
-        # Supertrend
-        dataframe = supertrend(dataframe)
-
-
-        return dataframe
-    
-    @staticmethod
-    def advise_all_indicators(pair_data: Dict[str, DataFrame]) -> Dict[str, DataFrame]:
-        def process_pair(dataframe, metadata):
-            return CustomStrategy.populate_indicators(dataframe, metadata)
-
-
-        with ThreadPoolExecutor() as executor:
-            results = executor.map(lambda x: process_pair(*x[1]), pair_data.items())
-
-        return {pair: result.copy() for (_, pair), (result, _) in zip(pair_data.items(), results)}
-
-    def __init__(self, config: Dict[str, Any]):
-        super().__init__(config)
-        self.advise_all_indicators = CustomStrategy.advise_all_indicators
-
-
-    def populate_buy_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
-        dataframe.loc[
-            (
-                # Bollinger Bands
-                (dataframe['close'] < dataframe['bb_lowerband']) &
-
-                # RSI
-                (dataframe['rsi'] < 30) &
-
-                # Moving Averages
-                (dataframe['ema_short'] > dataframe['ema_long']) &
-
-                # MACD
-                (dataframe['macd'] > dataframe['macdsignal']) &
-
-                # ADX
-                (dataframe['adx'] > 25) &
-
-                # Parabolic SAR
-                (dataframe['close'] > dataframe['sar']) &
-
-                # Ichimoku Cloud
-                (dataframe['close'] > dataframe['senkou_span_a']) &
-                (dataframe['close'] > dataframe['senkou_span_b']) &
-
-                # Stochastic Oscillator
-                (dataframe['slowk'] < 20) &
-                (dataframe['slowd'] < 20) &
-
-                # Supertrend
-                (dataframe['close'] > dataframe['supertrend'])
-            ),
-            'buy'] = 1
-
-        return dataframe
-
-    def populate_sell_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
-        dataframe.loc[
-            (
-                # Bollinger Bands
-                (dataframe['close'] > dataframe['bb_upperband']) &
-
-                # RSI
-                (dataframe['rsi'] > 70) &
-
-                # Moving Averages
-                (dataframe['ema_short'] < dataframe['ema_long']) &
-
-                # MACD
-                (dataframe['macd'] < dataframe['macdsignal']) &
-
-                # ADX
-                (dataframe['adx'] > 25) &
-
-                # Parabolic SAR
-                (dataframe['close'] < dataframe['sar']) &
-
-                # Ichimoku Cloud
-                (dataframe['close'] < dataframe['senkou_span_a']) &
-                (dataframe['close'] < dataframe['senkou_span_b']) &
-
-                # Stochastic Oscillator
-                (dataframe['slowk'] > 80) &
-                (dataframe['slowd'] > 80) &
-
-                # Supertrend
-                (dataframe['close'] < dataframe['supertrend'])
-            ),
-            'sell'] = 1
-
-        return dataframe
-
+Also, I am not sure if we should add deep learning models to work with the machine learning or if this would be "too much going on" and cause more problems than help, please give me your thoughts on this.
