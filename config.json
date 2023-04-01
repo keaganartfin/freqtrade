@@ -1,12 +1,13 @@
 
 {
-    "max_open_trades": 10,
+    "max_open_trades": 5,
     "stake_currency": "USDT",
     "stake_amount": 100,
+    "timeframe": "15m",
     "tradable_balance_ratio": 0.99,
     "fiat_display_currency": "USD",
     "dry_run": true,
-    "dry_run_wallet": 1000,
+    "dry_run_wallet": 200,
     "cancel_open_orders_on_exit": false,
     "trading_mode": "spot",
     "margin_mode": "",
@@ -39,7 +40,21 @@
             "enableRateLimit": true
           },
         "ccxt_async_config": {},
-        "pair_whitelist": ["1INCH/USDT","AAVE/USDT","ACH/USDT","ADA/USDT","ALGO/USDT","ALICE/USDT","ALPINE/USDT","ANT/USDT","APE/USDT","API3/USDT","APT/USDT","ASTR/USDT","ATOM/USDT","AUDIO/USDT","AVAX/USDT","AXS/USDT","BAL/USDT","BAND/USDT","BAT/USDT","BCH/USDT","BICO/USDT","BNB/USDT","BOND/USDT","BOSON/USDT","BTC/USDT","CELO/USDT","CELR/USDT","CHZ/USDT","CLV/USDT","COMP/USDT","COTI/USDT","CRV/USDT","CTSI/USDT","DAR/USDT","DGB/USDT","DIA/USDT","DOGE/USDT","DOT/USDT","EGLD/USDT","ENJ/USDT","ENS/USDT","EOS/USDT","ETC/USDT","ETH/USDT","FET/USDT","FIL/USDT","FLOW/USDT","FLUX/USDT","FORTH/USDT","FTM/USDT","GAL/USDT","GLM/USDT","GRT/USDT","GTC/USDT","ICP/USDT","ILV/USDT","IMX/USDT","JAM/USDT","KAVA/USDT","KDA/USDT","KNC/USDT","KSM/USDT","LDO/USDT","LINK/USDT","LOKA/USDT","LPT/USDT","LRC/USDT","LTC/USDT","LTO/USDT","MANA/USDT","MASK/USDT","MATIC/USDT","MKR/USDT","MXC/USDT","NEAR/USDT","NEO/USDT","NMR/USDT","OCEAN/USDT","OGN/USDT","OMG/USDT","ONE/USDT","ONT/USDT","OP/USDT","OXT/USDT","PAXG/USDT","POND/USDT","PROM/USDT","QNT/USDT","REEF/USDT","REN/USDT","REQ/USDT","RLC/USDT","","RNDR/USDT","ROSE/USDT","SAND/USDT","SHIB/USDT","SKL/USDT","SLP/USDT","SNX/USDT","SOL/USDT","STG/USDT","STORJ/USDT","SUSHI/USDT","SYS/USDT","T/USDT","TFUEL/USDT","THETA/USDT","TLM/USDT","TRAC/USDT","TRX/USDT","UNI/USDT","USDC/USDT","VET/USDT","VOXEL/USDT","WAXP/USDT","XLM/USDT","YFI/USDT","ZEC/USDT","ZEN/USDT"],
+        "pair_whitelist": [
+            "BTC/USDT",
+            "BCH/USDT",
+            "ETH/USDT",
+            "LINK/USDT",
+            "LTC/USDT",
+            "SOL/USDT",
+            "BNB/USDT",
+            "XRP/USDT",
+            "ADA/USDT",
+            "DOT/USDT",
+            "ETC/USDT",
+            "ALGO/USDT",
+            "LUNA/USDT"
+          ],
         "pair_blacklist": [
         ]
     },
