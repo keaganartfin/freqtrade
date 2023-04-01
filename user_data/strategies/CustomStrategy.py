@@ -8,7 +8,7 @@ from pandas import DataFrame
 import talib.abstract as ta
 from finta import TA
 import freqtrade.vendor.qtpylib.indicators as qtpylib
-from indicators.IchimokuIndicator import IchimokuIndicator
+from .indicators import *
 import numpy # noqa
 
 
