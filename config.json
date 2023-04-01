@@ -1,13 +1,14 @@
 
 {
-    "max_open_trades": 15,
+    "max_open_trades": 5,
     "stake_currency": "USDT",
     "stake_amount": 100,
     "timeframe": "15m",
     "tradable_balance_ratio": 0.99,
     "fiat_display_currency": "USD",
     "dry_run": true,
-    "dry_run_wallet": 200,
+    "db_url": "sqlite:///tradesv3.dryrun.sqlite",
+    "dry_run_wallet": 1000,
     "cancel_open_orders_on_exit": false,
     "trading_mode": "spot",
     "margin_mode": "",
@@ -41,26 +42,13 @@
           },
         "ccxt_async_config": {},
         "pair_whitelist": [
-            "BTC/USDT",
-            "BCH/USDT",
-            "ETH/USDT",
-            "LINK/USDT",
-            "LTC/USDT",
-            "SOL/USDT",
-            "BNB/USDT",
-            "XRP/USDT",
-            "ADA/USDT",
-            "DOT/USDT",
-            "ETC/USDT",
-            "ALGO/USDT",
-            "LUNA/USDT"
-          ],
+        ],
         "pair_blacklist": [
         ]
     },
     "pairlists": [
         {
-            "method": "StaticPairList",
+            "method": "VolumePairList",
             "number_assets": 20,
             "sort_key": "quoteVolume",
             "min_value": 0,
@@ -90,7 +78,7 @@
     "internals": {
         "process_throttle_secs": 5
     },
-    "strategy": "CustomStrategy",
+    "strategy": "ichiV1",
     "strategy_path": "user_data/strategies/",
     "backtesting": {
       "timerange": "20210101-20211231"
