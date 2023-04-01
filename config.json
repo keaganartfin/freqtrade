@@ -1,6 +1,6 @@
 
 {
-    "max_open_trades": 5,
+    "max_open_trades": 15,
     "stake_currency": "USDT",
     "stake_amount": 100,
     "timeframe": "15m",
